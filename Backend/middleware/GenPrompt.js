@@ -11,7 +11,8 @@ export const getResponse = async (prompt) => {
             model: "gemini-2.5-flash",
             contents: prompt,
         });
-        console.log(response.text);
+        // console.log(response.text, "here is the response from gen ai");
+        return response.text;
     } catch (error) {
         console.error("Error:", error);
     }

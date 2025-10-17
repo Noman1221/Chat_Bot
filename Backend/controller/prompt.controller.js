@@ -11,7 +11,6 @@ export const generateResponse = async (req, res) => {
     try {
         // Get response from the AI model
         const apiResponse = await getResponse(prompt);
-        console.log(apiResponse);
 
         // Save the prompt and response to the database
         const newPrompt = new Prompt({
@@ -19,6 +18,7 @@ export const generateResponse = async (req, res) => {
             ApiAns: apiResponse,
             userId: userId,
         });
+        console.log(newPrompt);
 
         await newPrompt.save();
 
