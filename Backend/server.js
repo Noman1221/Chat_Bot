@@ -7,9 +7,7 @@ dotenv.config();
 connectDB()
 const app = express();
 app.use(express.json());
-app.get("/", (req, res) => {
-    res.json({ data: "json" });
-});
+app.get("/", (req, res) => { res.json({ data: "json" }); });
 app.use("/auth", router);
 app.use("/api", promptRouter);
 
