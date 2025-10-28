@@ -6,7 +6,7 @@ const promptRouter = express.Router();
 
 // Example route for handling prompts
 promptRouter.post("/prompt", CheckIsAuthenticate, generateResponse);
-promptRouter.post("/prompts", CheckIsAuthenticate, getUserPrompts);
+promptRouter.get("/prompts", CheckIsAuthenticate, getUserPrompts);
 promptRouter.put("/prompt/:promptId", CheckIsAuthenticate, updatePrompt);
 promptRouter.delete("/prompt/:promptId", CheckIsAuthenticate, deletePrompt);
 export default promptRouter;
