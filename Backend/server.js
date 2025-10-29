@@ -1,3 +1,4 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/database.js";
@@ -6,6 +7,7 @@ import promptRouter from "./routes/prompt.route.js";
 dotenv.config();
 connectDB()
 const app = express();
+app.use(cors({ origin: "http://localhost:5173" }))
 app.use(express.json());
 app.get("/", (req, res) => { res.json({ data: "json" }); });
 app.use("/auth", router);
