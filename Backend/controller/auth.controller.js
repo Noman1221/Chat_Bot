@@ -43,3 +43,11 @@ export const login = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     };
 }
+
+export const currentUser = async (req, res) => {
+    let user = req.user;
+    if (!user) {
+        return res.status(401).json({ message: "user not exist" })
+    };
+    res.status(200).json({ user: user });
+};
