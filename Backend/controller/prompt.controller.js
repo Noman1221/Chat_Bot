@@ -3,7 +3,7 @@ import Prompt from "../model/promt.model.js";
 
 export const generateResponse = async (req, res) => {
     const { prompt } = req.body;
-    const userId = req.user.id; // Assuming user ID is available in req.user
+    const userId = req.user?.id; // Assuming user ID is available in req.user
 
     if (!prompt) {
         return res.status(400).json({ success: false, message: "Prompt is required" });
@@ -12,6 +12,9 @@ export const generateResponse = async (req, res) => {
         // Get response from the AI model
         const apiResponse = await getResponse(prompt);
 
+        if (!userId) {
+            return res.status(200).json({ success: true, data: apiResponse });
+        }
         // Save the prompt and response to the database
         const newPrompt = new Prompt({
             prompt: prompt,

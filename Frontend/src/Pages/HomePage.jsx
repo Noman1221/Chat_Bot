@@ -1,11 +1,16 @@
-import { authContext } from "../Context/AuthContext"
-import { useContext } from "react"
+import { useContext } from "react";
+import AuthChat from "../component/AuthChat";
+import GuestChat from "../component/GuestChat";
+import { authContext } from "../Context/AuthContext";
 function HomePage() {
-    const value = useContext(authContext);
-    console.log(value);
+    const { value, user, setUser } = useContext(authContext);
+
 
     return (
-        <div>HomePage</div>
+        <>
+            {!user ? <GuestChat /> : <AuthChat />}
+
+        </>
     )
 }
 
